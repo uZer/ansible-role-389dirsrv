@@ -1,0 +1,25 @@
+---
+# Manage sysctl.conf
+dirsrv_manage_fd: yes
+dirsrv_manage_tcp: yes
+dirsrv_config_in_ldap: yes
+
+# Dirsrv install
+dirsrv_server_id: "instance.void"
+dirsrv_admin_domain: "void"
+dirsrv_suffix: "dc=void"
+dirsrv_master_fqdn: "{{ ansible_fqdn }}"
+
+dirsrv_user: dirsrv
+dirsrv_group: dirsrv
+dirsrv_port: 389
+dirsrv_service_name: dirsrv
+dirsrv_package_state: installed
+dirsrv_password: "{{ vault_dirsrv_password }}"
+dirsrv_rootdn: "cn=Directory Manager"
+dirsrv_admin_port: '9830'
+dirsrv_admin_ip: '0.0.0.0'
+dirsrv_admin_service_name: dirsrv-admin
+dirsrv_admin_password: "{{ vault_dirsrv_admin_password }}"
+dirsrv_admin_suffix: "dc=void"
+# vim:ft=ansible:

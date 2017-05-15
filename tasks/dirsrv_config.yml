@@ -1,0 +1,22 @@
+---
+- name: Copy 389 ldap template
+  template:
+    src: "dirsrv.inf.j2"
+    dest: /root/dirsrv.inf
+    owner: root
+    group: root
+    mode: '0700'
+  tags:
+    - configure
+
+- name: Configure LDAP if /etc/dirsrv/slapd-.../dsi.ldif doesn't exist yet.
+  shell: >
+    {{ dirsrv_setupdsadmin }} \
+      --silent \
+      --file=/root/dirsrv.inf \
+      --logfile=/root/389install.log
+  args:
+    creates: "/etc/dirsrv/slapd-{{ dirsrv_name }}/dse.ldif"
+  tags:
+    - configure
+# vim:ft=ansible:

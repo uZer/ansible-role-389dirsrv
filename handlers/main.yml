@@ -1,0 +1,11 @@
+---
+- name: restart dirsrv
+  service:
+    name: "{{ dirsrv_service_name }}"
+    state: restarted
+
+- name: restart dirsrv-admin
+  service:
+    name: "{{ dirsrv_admin_service_name }}"
+    state: restarted
+# vim:ft=ansible:

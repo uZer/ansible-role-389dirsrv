@@ -1,0 +1,48 @@
+---
+- name: Create dirsrv group if needed
+  group:
+    name: "{{ dirsrv_group }}"
+    state: present
+
+- name: Create dirsrv user if needed
+  user:
+    name: "{{ dirsrv_user }}"
+    state: present
+    shell: /usr/sbin/nologin
+    home: /var/lib/dirsrv
+    group: "{{ dirsrv_group }}"
+
+- name: Configure systemctl variables for tcp optimisation
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { name: net.ipv4.tcp_keepalive_time, value: 300 }
+    - { name: net.ipv4.ip_local_port_range, value: "1024 65000" }
+  when: dirsrv_manage_tcp
+  tags:
+    - server
+
+- name: Configure systemctl variables for max files
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { name: fs.file-max, value: 64000 }
+  when: dirsrv_manage_fd
+  tags:
+    - server
+
+- name: Configure file descriptors for dirsrv systemd service
+  ini_file:
+    dest: /etc/sysconfig/dirsrv
+    section: 'Service'
+    option: 'LimitNOFILE'
+    value: '8192'
+    state: present
+  when: dirsrv_manage_fd
+  tags:
+    - server
+# vim:ft=ansible:

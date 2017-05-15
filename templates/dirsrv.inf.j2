@@ -1,0 +1,37 @@
+# {{ ansible_managed }}
+[General]
+FullMachineName = {{ ansible_fqdn }}
+SuiteSpotUserID = {{ dirsrv_user }}
+SuiteSpotGroup = {{ dirsrv_group }}
+ServerRoot = /etc/dirsrv
+AdminDomain = {{ dirsrv_admin_domain }}
+ConfigDirectoryAdminID = admin
+ConfigDirectoryAdminPwd = {{ dirsrv_admin_password }}
+ConfigDirectoryLdapURL = ldap://{{ dirsrv_master_fqdn }}:{{ dirsrv_port }}/o=NetscapeRoot
+UserDirectoryAdminID = admin
+UserDirectoryAdminPwd = {{ dirsrv_admin_password }}
+UserDirectoryLdapURL = ldap://{{ ansible_fqdn }}:{{ dirsrv_port }}/{{ dirsrv_suffix }}
+
+[slapd]
+{% if dirsrv_config_in_ldap %}
+SlapdConfigForMC = Yes
+{% else %}
+SlapdConfigForMC = No
+{% endif %}
+ServerPort = {{ dirsrv_port }}
+UseExistingMC = 1
+UseExistingUG = No
+ServerIdentifier = {{ dirsrv_server_id }}
+Suffix = {{ dirsrv_suffix }}
+RootDN = {{ dirsrv_rootdn }}
+RootDNPwd = {{ dirsrv_password }}
+InstallLdifFile = none
+AddOrgEntries = No
+AddSampleEntries = No
+DisableSchemaChecking = No
+
+[admin]
+Port = {{ dirsrv_admin_port }}
+ServerIpAddress = {{ dirsrv_admin_ip }}
+ServerAdminID = admin
+ServerAdminPwd = {{ dirsrv_admin_password }}

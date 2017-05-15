@@ -1,0 +1,29 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: uZer
+  description: 389directory installation and configuration
+  company: "TheVOID"
+  license: "Beerware"
+  min_ansible_version: 2.2
+  platforms:
+  - name: EL
+    versions:
+      - 6
+      - 7
+  - name: Debian
+    versions:
+      - all
+  - name: Ubuntu
+    versions:
+      - all
+    galaxy_tags:
+      - ldap
+      - 389directory
+      - dirsrv
+      - 389dirsrv
+      - master
+      - replica
+
+

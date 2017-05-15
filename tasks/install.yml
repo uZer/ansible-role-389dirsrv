@@ -1,0 +1,21 @@
+---
+- name: Install 389ds packages (apt)
+  apt:
+    name: "{{ item }}"
+    state: "{{ dirsrv_package_state }}"
+  when: ansible_os_family == "Debian"
+  with_items:
+    - "{{ dirsrv_packages }}"
+  tags:
+    - install
+
+- name: Install 389ds packages (yum)
+  yum:
+    name: "{{ item }}"
+    state: "{{ dirsrv_package_state }}"
+  when: ansible_os_family == "RedHat"
+  with_items:
+    - "{{ dirsrv_packages }}"
+  tags:
+    - install
+# vim:ft=ansible:

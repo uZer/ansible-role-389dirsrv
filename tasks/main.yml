@@ -1,0 +1,19 @@
+---
+- include_vars: '{{ ansible_os_family }}.yml'
+  tags:
+    - install
+    - server
+    - configure
+
+- include: install.yml
+- include: server_config.yml
+- include: dirsrv_config.yml
+
+- meta: flush_handlers
+
+- name: Ensure 389dirsrv is started and enabled
+  service:
+    name: "{{ dirsrv_service_name }}"
+    state: started
+    enabled: yes
+# vim:ft=ansible:
