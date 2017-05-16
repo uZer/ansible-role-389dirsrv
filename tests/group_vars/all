@@ -1,5 +1,5 @@
 ---
 vault_dirsrv_password: 'adminROOT secure PWD (('
 vault_dirsrv_admin_password: 'adminROOT secure PWD (('
-dirsrv_master_fqdn: test.domain
-dirsrv_local_fqdn: test.domain
+dirsrv_master_fqdn: instance01.void
+dirsrv_local_fqdn: instance01.void

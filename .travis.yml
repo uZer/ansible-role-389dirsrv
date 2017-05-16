@@ -5,6 +5,11 @@ dist: trusty
 
 # before_install:
   # - "echo OK"
+
+addons:
+  hosts:
+    - instance01.void
+
 env:
   - SITE=test.yml
 
