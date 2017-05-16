@@ -49,7 +49,7 @@ dirsrv_manage_tcp: yes
 dirsrv_config_in_ldap: yes
 
 # Dirsrv install
-dirsrv_server_id: "instance.void"
+dirsrv_server_id: "instance01"
 dirsrv_admin_domain: "void"
 dirsrv_suffix: "dc=void"
 dirsrv_master_fqdn: "{{ ansible_fqdn }}"
