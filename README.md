@@ -65,6 +65,12 @@ dirsrv_admin_port: '9830'
 dirsrv_admin_ip: '0.0.0.0'
 dirsrv_admin_service_name: dirsrv-admin
 dirsrv_admin_password: "{{ vault_dirsrv_admin_password }}"
+
+# Extra variables per OS:
+dirsrv_packages: <this list should not be edited>
+dirsrv_service_name: dirsrv
+dirsrv_user: dirsrv
+dirsrv_group: dirsrv
 ```
 
 License

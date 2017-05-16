@@ -16,7 +16,7 @@
       --file=/root/dirsrv.inf \
       --logfile=/root/389install.log
   args:
-    creates: "/etc/dirsrv/slapd-{{ dirsrv_name }}/dse.ldif"
+    creates: "/etc/dirsrv/slapd-{{ dirsrv_admin_domain }}/dse.ldif"
   tags:
     - configure
 # vim:ft=ansible:
