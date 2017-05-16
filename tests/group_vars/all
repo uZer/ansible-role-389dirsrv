@@ -1,3 +1,4 @@
 ---
 vault_dirsrv_password: 'adminROOT secure PWD (('
 vault_dirsrv_admin_password: 'adminROOT secure PWD (('
+dirsrv_master_fqdn: test.domain
