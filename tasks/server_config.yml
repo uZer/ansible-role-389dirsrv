@@ -2,12 +2,14 @@
 - name: Create dirsrv group if needed
   group:
     name: "{{ dirsrv_group }}"
+    gid: 389
     state: present
 
 - name: Create dirsrv user if needed
   user:
     name: "{{ dirsrv_user }}"
     state: present
+    uid: 389
     shell: /usr/sbin/nologin
     home: /var/lib/dirsrv
     group: "{{ dirsrv_group }}"
@@ -31,7 +33,7 @@
     state: present
   with_items:
     - { name: fs.file-max, value: 64000 }
-  when: dirsrv_manage_fd
+  when: dirsrv_manage_filemax
   tags:
     - server
 
@@ -42,7 +44,7 @@
     option: 'LimitNOFILE'
     value: '8192'
     state: present
-  when: dirsrv_manage_fd
+  when: dirsrv_manage_filemax
   tags:
     - server
 # vim:ft=ansible:

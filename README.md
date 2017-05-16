@@ -20,10 +20,52 @@ Dependencies
 ------------
 Should work on Centos, Redhat, Ubuntu, Debian.
 
-Usage
------
+Parameters
+----------
 
-    Work in progress
+- Minimum variables to define:
+
+```yaml
+## IN VAULT
+vault_dirsrv_password: "<password>"
+vault_dirsrv_admin_password: "<admin-password>"
+
+## IN GROUP_VARS/HOST_VARS
+dirsrv_server_id: "<instance fqdn>"
+dirsrv_admin_domain: "<instance domain>"
+dirsrv_suffix: "<dc=<instance domain>>"
+```
+
+- Exhaustive variables definition:
+
+```yaml
+# Manage max open files in sysctl
+dirsrv_manage_filemax: yes
+
+# Manage dynamic tcp ports > 1024 in sysctl
+dirsrv_manage_tcp: yes
+
+# Store config in ldap (yes) or in directory (no)
+dirsrv_config_in_ldap: yes
+
+# Dirsrv install
+dirsrv_server_id: "instance.void"
+dirsrv_admin_domain: "void"
+dirsrv_suffix: "dc=void"
+dirsrv_master_fqdn: "{{ ansible_fqdn }}"
+
+dirsrv_user: dirsrv
+dirsrv_group: dirsrv
+dirsrv_port: 389
+dirsrv_service_name: dirsrv
+dirsrv_package_state: installed
+dirsrv_password: "{{ vault_dirsrv_password }}"
+dirsrv_rootdn: "cn=Directory Manager"
+dirsrv_admin_port: '9830'
+dirsrv_admin_ip: '0.0.0.0'
+dirsrv_admin_service_name: dirsrv-admin
+dirsrv_admin_password: "{{ vault_dirsrv_admin_password }}"
+```
 
 License
 -------
