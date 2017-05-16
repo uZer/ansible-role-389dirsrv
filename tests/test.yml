@@ -1,0 +1,7 @@
+---
+- name: Deploy role
+  hosts: localhost
+  remote_user: root
+  roles:
+    - ansible-role-389dirsrv
+# vim:ft=ansible:
