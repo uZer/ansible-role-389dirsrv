@@ -25,5 +25,6 @@ galaxy_info:
       - 389dirsrv
       - master
       - replica
+      - directory
 
 
