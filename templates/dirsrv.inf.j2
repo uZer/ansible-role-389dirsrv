@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 [General]
-FullMachineName = {{ ansible_fqdn }}
+FullMachineName = {{ dirsrv_local_fqdn }}
 SuiteSpotUserID = {{ dirsrv_user }}
 SuiteSpotGroup = {{ dirsrv_group }}
 ServerRoot = /etc/dirsrv
@@ -10,7 +10,7 @@ ConfigDirectoryAdminPwd = {{ dirsrv_admin_password }}
 ConfigDirectoryLdapURL = ldap://{{ dirsrv_master_fqdn }}:{{ dirsrv_port }}/o=NetscapeRoot
 UserDirectoryAdminID = admin
 UserDirectoryAdminPwd = {{ dirsrv_admin_password }}
-UserDirectoryLdapURL = ldap://{{ ansible_fqdn }}:{{ dirsrv_port }}/{{ dirsrv_suffix }}
+UserDirectoryLdapURL = ldap://{{ dirsrv_local_fqdn }}:{{ dirsrv_port }}/{{ dirsrv_suffix }}
 
 [slapd]
 {% if dirsrv_config_in_ldap %}

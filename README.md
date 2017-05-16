@@ -52,7 +52,9 @@ dirsrv_config_in_ldap: yes
 dirsrv_server_id: "instance01"
 dirsrv_admin_domain: "void"
 dirsrv_suffix: "dc=void"
+
 dirsrv_master_fqdn: "{{ ansible_fqdn }}"
+dirsrv_local_fqdn: "{{ ansible_fqdn }}"
 
 dirsrv_user: dirsrv
 dirsrv_group: dirsrv
