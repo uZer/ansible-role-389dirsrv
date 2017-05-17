@@ -1,7 +1,12 @@
 ---
 - name: Deploy role
   hosts: localhost
-  remote_user: root
+  vars:
+    vault_dirsrv_password: 'adminROOT secure PWD (('
+    vault_dirsrv_admin_password: 'adminROOT secure PWD (('
+    dirsrv_master_fqdn: local.dev
+    dirsrv_local_fqdn: local.dev
+    dirsrv_server_id: localhost
   roles:
-    - ansible-role-389dirsrv
+    - role: role_under_test
 # vim:ft=ansible:

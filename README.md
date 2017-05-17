@@ -1,8 +1,6 @@
 ansible-role-389dirsrv
 ======================
 
-Work in progress
-
 [![Build Status](https://travis-ci.org/uZer/ansible-role-389dirsrv.svg?branch=master)](https://travis-ci.org/uZer/ansible-role-389dirsrv)
 
 This role installs 389dirsrv from apt/yum repository, configures system
@@ -14,7 +12,7 @@ All variables should be configured in `host_vars` or `group_vars`. Check
 system tunning can be disables according to your needs.
 
 Inspired by CSCfi's original role https://github.com/CSCfi/ansible-role-389-ds.
-Difference is I don't install RHEL and give more variables for customization.
+Difference is I don't install RHEL and provide more variables for customization.
 
 Dependencies
 ------------
@@ -82,6 +80,10 @@ License
 As long as you retain this notice you can do whatever you want with this stuff.
 If we meet some day, and you think this stuff is worth it, you can buy me some
 beers in return.
+
+Testing with Travis
+-------------------
+I'm using excellent geerlingguy's test suite.
 
 Author Information
 ------------------
