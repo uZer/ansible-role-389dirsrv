@@ -11,10 +11,7 @@
 
 - name: Configure LDAP if /etc/dirsrv/slapd-.../dsi.ldif doesn't exist yet.
   shell: >
-    {{ dirsrv_setupdsadmin }} \
-      --silent \
-      --file=/root/dirsrv.inf \
-      --logfile=/root/389install.log
+    {{ dirsrv_setupdsadmin }} --silent --file=/root/dirsrv.inf --logfile=/root/389install.log
   args:
     creates: "/etc/dirsrv/slapd-{{ dirsrv_admin_domain }}/dse.ldif"
   tags:

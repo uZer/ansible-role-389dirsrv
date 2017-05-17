@@ -8,14 +8,13 @@ env:
   - distro: debian8
   - distro: ubuntu1604
   - distro: ubuntu1404
-  - distro: ubuntu1204
 
 script:
-  # Download test shim.
-  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
+  # Download test shim, clone of geerlingguy's
+  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/uZer/990587ff11255f9afdfbea9d79c3297e/raw/
   - chmod +x ${PWD}/tests/test.sh
 
-  # Run tests.
+  # Run tests without nodocker tags
   - ${PWD}/tests/test.sh
 
 notifications:

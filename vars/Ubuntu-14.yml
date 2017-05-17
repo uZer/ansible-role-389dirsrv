@@ -2,7 +2,7 @@
 dirsrv_packages:
   - 389-ds
   - ldap-utils
-dirsrv_service_name: dirsrv.target
+dirsrv_service_name: dirsrv
 dirsrv_user: dirsrv
 dirsrv_group: dirsrv
 dirsrv_setupdsadmin: setup-ds-admin

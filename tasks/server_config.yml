@@ -4,6 +4,8 @@
     name: "{{ dirsrv_group }}"
     gid: 389
     state: present
+  tags:
+    - server
 
 - name: Create dirsrv user if needed
   user:
@@ -13,6 +15,8 @@
     shell: /usr/sbin/nologin
     home: /var/lib/dirsrv
     group: "{{ dirsrv_group }}"
+  tags:
+    - server
 
 - name: Configure systemctl variables for tcp optimisation
   sysctl:
@@ -25,6 +29,7 @@
   when: dirsrv_manage_tcp
   tags:
     - server
+    - nodocker
 
 - name: Configure systemctl variables for max files
   sysctl:
@@ -36,15 +41,17 @@
   when: dirsrv_manage_filemax
   tags:
     - server
+    - nodocker
 
-- name: Configure file descriptors for dirsrv systemd service
+- name: Configure file limits for dirsrv service
   ini_file:
     dest: /etc/sysconfig/dirsrv
     section: 'Service'
     option: 'LimitNOFILE'
     value: '8192'
     state: present
-  when: dirsrv_manage_filemax
+  when: dirsrv_manage_filemax and ansible_os_family == "RedHat"
   tags:
     - server
+    - nodocker
 # vim:ft=ansible:

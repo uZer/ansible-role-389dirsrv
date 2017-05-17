@@ -9,9 +9,9 @@ dirsrv_manage_tcp: yes
 dirsrv_config_in_ldap: yes
 
 # Dirsrv install
-dirsrv_server_id: "instance01"
-dirsrv_admin_domain: "void"
-dirsrv_suffix: "dc=void"
+dirsrv_server_id: "{{ dirsrv_local_fqdn.split('.')[0] }}"
+dirsrv_admin_domain: "{{ dirsrv_master_fqdn.split('.')[-2] }}.{{ dirsrv_master_fqdn.split('.')[-1] }}"
+dirsrv_suffix: "dc={{ dirsrv_master_fqdn.split('.')[-2] | default(389) }},dc={{ dirsrv_master_fqdn.split('.')[-1] }}"
 dirsrv_master_fqdn: "{{ ansible_fqdn }}"
 dirsrv_local_fqdn: "{{ ansible_fqdn }}"
 
@@ -25,9 +25,6 @@ dirsrv_rootdn: "cn=Directory Manager"
 
 dirsrv_admin_port: '9830'
 dirsrv_admin_ip: '0.0.0.0'
-dirsrv_admin_service_name: dirsrv-admin
+dirsrv_admin_service_name: "dirsrv-admin"
 dirsrv_admin_password: "{{ vault_dirsrv_admin_password }}"
-
-
-
 # vim:ft=ansible:

@@ -1,9 +1,11 @@
 ---
 dirsrv_packages:
-  - 389-ds
-  - ldap-utils
+  - 389-ds-base
+  - 389-console
+  - 389-admin
+  - openldap-clients
 dirsrv_service_name: dirsrv.target
 dirsrv_user: dirsrv
 dirsrv_group: dirsrv
-dirsrv_setupdsadmin: setup-ds-admin
+dirsrv_setupdsadmin: setup-ds-admin.pl
 # vim:ft=ansible:
