@@ -10,7 +10,7 @@
     - configure
 
 - stat:
-    path: "/etc/dirsrv/slapd-{{ dirsrv_admin_domain }}"
+    path: "/etc/dirsrv/slapd-{{ dirsrv_server_id }}"
   register: p
   check_mode: no
   failed_when: false
@@ -18,10 +18,9 @@
   tags:
     - configure
 
-- name: Configure LDAP if /etc/dirsrv/slapd-{{ dirsrv_admin_domain }} doesn't exist yet.
+- name: Configure LDAP if /etc/dirsrv/slapd-{{ dirsrv_server_id }} doesn't exist yet.
   shell: >
     {{ dirsrv_setupdsadmin }} --silent --file=/root/dirsrv.inf --logfile=/root/389install.log
-    "/etc/dirsrv/slapd-{{ dirsrv_admin_domain }}"
   when: not (p.stat.isdir is defined)
   tags:
     - configure
