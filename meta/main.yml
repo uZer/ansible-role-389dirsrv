@@ -14,11 +14,11 @@ galaxy_info:
       - 7
   - name: Debian
     versions:
-      - 8
+      - jessie
   - name: Ubuntu
     versions:
-      - 14.04
-      - 16.04
+      - trusty
+      - xenial
     galaxy_tags:
       - ldap
       - 389directory
