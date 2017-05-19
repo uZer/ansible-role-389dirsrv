@@ -9,7 +9,15 @@
     name: "{{ dirsrv_admin_service_name }}"
     state: restarted
 
+# Before ansible 2.4
 - name: daemon-reload
   systemd:
     daemon_reload: yes
+    name: "{{ dirsrv_service_name }}"
+    state: restarted
+
+# Preparing Ansible 2.4
+#- name: daemon-reload
+#  systemd:
+#    daemon_reload: yes
 # vim:ft=ansible:

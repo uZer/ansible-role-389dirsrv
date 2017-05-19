@@ -9,11 +9,21 @@
   tags:
     - configure
 
-- name: Configure LDAP if /etc/dirsrv/slapd-.../dsi.ldif doesn't exist yet.
-  shell: >
-    {{ dirsrv_setupdsadmin }} --silent --file=/root/dirsrv.inf --logfile=/root/389install.log
-  args:
-    creates: "/etc/dirsrv/slapd-{{ dirsrv_admin_domain }}/dse.ldif"
+- stat:
+    path: "/etc/dirsrv/slapd-{{ dirsrv_admin_domain }}"
+  register: p
+  check_mode: no
+  failed_when: false
+  changed_when: false
   tags:
     - configure
+
+- name: Configure LDAP if /etc/dirsrv/slapd-{{ dirsrv_admin_domain }} doesn't exist yet.
+  shell: >
+    {{ dirsrv_setupdsadmin }} --silent --file=/root/dirsrv.inf --logfile=/root/389install.log
+    "/etc/dirsrv/slapd-{{ dirsrv_admin_domain }}"
+  when: not (p.stat.isdir is defined)
+  tags:
+    - configure
+
 # vim:ft=ansible:
