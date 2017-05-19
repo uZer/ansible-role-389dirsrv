@@ -7,7 +7,7 @@
   tags:
     - server
 
-- name: Create dirsrv user if needed
+- name: Create dirsrv users if needed
   user:
     name: "{{ dirsrv_user }}"
     state: present
@@ -43,15 +43,34 @@
     - server
     - nodocker
 
-- name: Configure file limits for dirsrv service
+- name: Configure file limits for dirsrv service (sysv/init/not systemd)
   ini_file:
     dest: /etc/sysconfig/dirsrv
     section: 'Service'
     option: 'LimitNOFILE'
     value: '8192'
     state: present
-  when: dirsrv_manage_filemax and ansible_os_family == "RedHat"
+  when: >
+    dirsrv_manage_filemax and
+    ansible_os_family == "RedHat" and
+    ansible_service_mgr != "systemd"
   tags:
     - server
-    - nodocker
+
+- name: Configure file limits for dirsrv service (systemd)
+  lineinfile:
+    dest: /etc/sysconfig/dirsrv.systemd
+    state: present
+    insertafter: "^[Service]"
+    line: "LimitNOFILE=8192"
+    regexp: "^LimitNOFILE"
+  when: >
+    dirsrv_manage_filemax and
+    ansible_service_mgr == "systemd"
+  notify:
+    - daemon-reload
+    - restart dirsrv
+    - restart dirsrv-admin
+  tags:
+    - server
 # vim:ft=ansible:

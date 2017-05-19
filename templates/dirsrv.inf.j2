@@ -15,12 +15,13 @@ UserDirectoryLdapURL = ldap://{{ dirsrv_local_fqdn }}:{{ dirsrv_port }}/{{ dirsr
 [slapd]
 {% if dirsrv_config_in_ldap %}
 SlapdConfigForMC = Yes
+UseExistingMC = 0
 {% else %}
 SlapdConfigForMC = No
-{% endif %}
-ServerPort = {{ dirsrv_port }}
 UseExistingMC = 1
 UseExistingUG = No
+{% endif %}
+ServerPort = {{ dirsrv_port }}
 ServerIdentifier = {{ dirsrv_server_id }}
 Suffix = {{ dirsrv_suffix }}
 RootDN = {{ dirsrv_rootdn }}

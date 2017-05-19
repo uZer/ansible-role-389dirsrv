@@ -7,7 +7,7 @@ dirsrv_manage_tcp: yes
 
 # Store config in ldap (yes) or in directory (no). If in ldap, check for config
 # task in dirsrv_config.yml must be changed for idempotency
-dirsrv_config_in_ldap: no
+dirsrv_config_in_ldap: yes
 
 # Dirsrv install
 dirsrv_server_id: "{{ dirsrv_local_fqdn.split('.')[0] }}"
