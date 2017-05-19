@@ -5,8 +5,8 @@ dirsrv_manage_filemax: yes
 # Manage dynamic tcp ports > 1024 in sysctl
 dirsrv_manage_tcp: yes
 
-# Store config in ldap (yes) or in directory (no). If in ldap, check in
-# dirsrv_config must be changed for idempotency
+# Store config in ldap (yes) or in directory (no). If in ldap, check for config
+# task in dirsrv_config.yml must be changed for idempotency
 dirsrv_config_in_ldap: no
 
 # Dirsrv install
@@ -24,6 +24,9 @@ dirsrv_package_state: installed
 dirsrv_password: "{{ vault_dirsrv_password }}"
 dirsrv_rootdn: "cn=Directory Manager"
 
+## ADMIN
+# Should be in the same group as dirsrv_group
+dirsrv_admin_user: "{{ dirsrv_user }}"
 dirsrv_admin_port: '9830'
 dirsrv_admin_ip: '0.0.0.0'
 dirsrv_admin_service_name: "dirsrv-admin"
