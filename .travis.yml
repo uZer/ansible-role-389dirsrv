@@ -5,7 +5,7 @@ services:
 env:
   - distro: centos7
   - distro: centos6
-  - distro: debian8
+  # - distro: debian8
   - distro: ubuntu1604
   - distro: ubuntu1404
 
