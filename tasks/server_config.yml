@@ -94,12 +94,12 @@
     - server
 
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=737214
-- name: Debian 8 fix for libsoftiken3.so
-  shell: >
-    cd /usr/lib/i386-linux-gnu/
-    ln -s /usr/lib/i386-linux-gnu/nss/libsoftokn3.so
-    ldd /usr/lib/i386-linux-gnu/dirsrv/cgi-bin/config
-  when: >
-    ansible_distribution == "Debian" and
-    ansible_distribution_major_version == "8"
+# - name: Debian 8 fix for libsoftiken3.so
+#   shell: >
+#     cd /usr/lib/i386-linux-gnu/
+#     ln -s /usr/lib/i386-linux-gnu/nss/libsoftokn3.so
+#     ldd /usr/lib/i386-linux-gnu/dirsrv/cgi-bin/config
+#   when: >
+#     ansible_distribution == "Debian" and
+#     ansible_distribution_major_version == "8"
 # vim:ft=ansible:
