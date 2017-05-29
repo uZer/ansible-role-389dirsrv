@@ -30,6 +30,12 @@ InstallLdifFile = none
 AddOrgEntries = No
 AddSampleEntries = No
 DisableSchemaChecking = No
+{% if dirsrv_master_fqdn is dirsrv_local_fqdn %}
+UseReplication = No
+{% else %}
+UseReplication = Yes
+{% endif %}
+
 
 [admin]
 Port = {{ dirsrv_admin_port }}
