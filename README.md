@@ -3,7 +3,7 @@ ansible-role-389dirsrv
 
 [![Build Status](https://img.shields.io/travis/uZer/ansible-role-389dirsrv.svg?style=flat-square)](https://travis-ci.org/uZer/ansible-role-389dirsrv)
 [![Galaxy](http://img.shields.io/badge/galaxy-uZer.389dirsrv-blue.svg?style=flat-square)](https://galaxy.ansible.com/uZer/389dirsrv/)
-[![GitHub Stars](https://img.shields.io/github/stars/uZer/ansible-role-389dirsrv.svg)](https://github.com/uZer/ansible-role-389dirsrv)
+[![GitHub Stars](https://img.shields.io/github/stars/uZer/ansible-role-389dirsrv.svg?style=flat-square)](https://github.com/uZer/ansible-role-389dirsrv)
 
 This role installs 389dirsrv from apt/yum repository, configures system
 max files and TCP ports, installs / configure ldap instance.
