@@ -30,7 +30,7 @@ InstallLdifFile = none
 AddOrgEntries = No
 AddSampleEntries = No
 DisableSchemaChecking = No
-{% if dirsrv_master_fqdn is dirsrv_local_fqdn %}
+{% if dirsrv_master_fqdn == dirsrv_local_fqdn %}
 UseReplication = No
 {% else %}
 UseReplication = Yes
