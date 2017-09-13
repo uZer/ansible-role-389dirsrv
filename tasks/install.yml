@@ -11,6 +11,12 @@
   tags:
     - install
 
+- name: install epel-release for CentOS
+  yum:
+    name: epel-release
+    state: present
+  when: ansible_os_family == "RedHat"
+
 - name: Install 389ds packages (yum)
   yum:
     name: "{{ item }}"
