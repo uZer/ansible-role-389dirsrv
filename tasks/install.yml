@@ -1,23 +1,19 @@
 ---
 - name: Install 389ds packages (apt)
   apt:
-    name: "{{ item }}"
+    name: "{{ dirsrv_packages }}"
     state: "{{ dirsrv_package_state }}"
     update_cache: yes
     cache_valid_time: 3600
   when: ansible_os_family == "Debian"
-  with_items:
-    - "{{ dirsrv_packages }}"
   tags:
     - install
 
 - name: Install 389ds packages (yum)
   yum:
-    name: "{{ item }}"
+    name: "{{ dirsrv_packages }}"
     state: "{{ dirsrv_package_state }}"
   when: ansible_os_family == "RedHat"
-  with_items:
-    - "{{ dirsrv_packages }}"
   tags:
     - install
 # vim:ft=ansible:
